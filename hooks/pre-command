@@ -51,7 +51,10 @@ npm whoami > /dev/null
 
 # Install global package
 
-if command -v yarn &> /dev/null; then
+if command -v pnpm &> /dev/null; then
+  echo "Running with pnpm"
+  pnpm add --global "${PACKAGE}"
+elif command -v yarn &> /dev/null; then
   yarn_major=$(yarn --version | cut -d. -f1)
 
   if [[ "$yarn_major" -ge 2 ]]; then
